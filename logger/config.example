@@ -1,0 +1,29 @@
+{
+    // 是否开启 DEBUG，此值设置为 true 时 Level 字段不生效。默认为 false
+    "debug": false,
+    // 日志级别，支持 DEBUG、INFO、WARN、ERROR 四种。 默认为 WARN
+    "level": "INFO",
+    // 日志输出类型，支持 DEFAULT、TEXT 和 JSON 三种。 默认为 DEFAULT
+    "encoder": "JSON",
+    // 时间格式，支持 DEFAULT 和 QISHU 两种，默认为 DEFAULT
+    "time_format": "QISHU",
+    // FILE 日志需要的切分配置
+    "logrotate": {
+        // 单个文件大小的最大值，单位为 MB。默认为 100MB
+        "maxsize": 500,
+        // 保留文件的最大天数。默认不清理历史文件
+        "maxage": 10,
+        // 保留最大的历史文件数。默认不清理历史文件
+        "maxbackups": 10,
+        // 是否压缩日志文件。默认不压缩
+        "compress": false
+    },
+    // 日志输出，支持 syslog://HOST:PORT、STDOUT、STDERR 和 FILE 四种。默认为 STDOUT
+    // 注: SYSLOG 仅支持 UDP
+    "output": [
+        "syslog://127.0.0.1:1234",
+        "STDOUT"
+    ],
+    // SYSLOG 日志需要的 APP 字段， 默认为 go-kit
+    "app": "example"
+}
