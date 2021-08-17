@@ -5,10 +5,10 @@ go 1.16
 require (
 	github.com/Shopify/sarama v1.27.1
 	github.com/eclipse/paho.mqtt.golang v1.3.2
-	github.com/garyburd/redigo v1.6.2
 	github.com/gin-gonic/gin v1.6.3
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/golang/snappy v0.0.2 // indirect
+	github.com/gomodule/redigo v1.8.5
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414 // indirect
 	github.com/sirupsen/logrus v1.8.1
 	github.com/wvanbergen/kafka v0.0.0-20171203153745-e2edea948ddf
