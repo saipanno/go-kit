@@ -125,9 +125,6 @@ func RunCommandWithEnvUser(CMDs, env []string, username string, timeout ...int) 
 			if exitError, ok := r.err.(*exec.ExitError); ok {
 				exit = exitError.Sys().(syscall.WaitStatus).ExitStatus()
 			}
-
-			output = fmt.Sprintf("execute `%s` failed, output is %s, error message is %s",
-				strings.Join(CMDs, " "), output, r.err.Error())
 		} else {
 			exit = 0
 		}
