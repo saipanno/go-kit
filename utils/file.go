@@ -68,7 +68,7 @@ func CopyFile(src, dst string, backupDir ...string) (written int64, err error) {
 		defer sf.Close()
 
 		var bf *os.File
-		bf, err = os.OpenFile(backup, os.O_WRONLY|os.O_CREATE, 0644)
+		bf, err = os.Create(backup)
 		if err != nil {
 			err = fmt.Errorf("open file %s failed, message is %s", backup, err.Error())
 			return
