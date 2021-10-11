@@ -68,9 +68,9 @@ func CopyFile(src, dst string, backupDir ...string) (written int64, err error) {
 		return
 	}
 
-	err = os.Rename(src, dst)
+	err = shutil.CopyFile(src, dst, false)
 	if err != nil {
-		err = fmt.Errorf("rename file %s to %s failed, message is %s", src, dst, err.Error())
+		err = fmt.Errorf("copy file %s to %s failed, message is %s", src, dst, err.Error())
 	}
 
 	return
