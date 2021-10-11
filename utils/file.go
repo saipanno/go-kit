@@ -63,9 +63,8 @@ func CopyFile(src, dst string, backupDir ...string) (backup string, err error) {
 		err = shutil.CopyFile(dst, backup, false)
 		if err != nil {
 			err = fmt.Errorf("backup file failed, message is %s", err.Error())
+			return
 		}
-
-		return
 	}
 
 	err = shutil.CopyFile(src, dst, false)
