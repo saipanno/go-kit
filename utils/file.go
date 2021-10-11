@@ -41,7 +41,7 @@ func DirExist(dir string, autoCreate ...bool) bool {
 }
 
 // CopyFile ...
-func CopyFile(src, dst string, backupDir ...string) (written int64, err error) {
+func CopyFile(src, dst string, backupDir ...string) (backup string, err error) {
 
 	suffix := time.Now().Format("20060102150405")
 
@@ -58,9 +58,9 @@ func CopyFile(src, dst string, backupDir ...string) (written int64, err error) {
 		}
 
 		name := filepath.Base(dst)
-		backup := path.Join(backupDir[0], name) + "." + suffix
+		backup = path.Join(backupDir[0], name) + "." + suffix
 
-		err = shutil.CopyFile(src, backup, false)
+		err = shutil.CopyFile(dst, backup, false)
 		if err != nil {
 			err = fmt.Errorf("backup file failed, message is %s", err.Error())
 		}
