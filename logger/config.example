@@ -5,7 +5,7 @@
     "level": "INFO",
     // 日志输出类型，支持 DEFAULT、TEXT 和 JSON 三种。 默认为 DEFAULT
     "encoder": "JSON",
-    // 时间格式，支持 DEFAULT 和 QISHU 两种，默认为 DEFAULT
+    // 时间格式，自定义时间格式
     "time_format": "QISHU",
     // FILE 日志需要的切分配置
     "logrotate": {

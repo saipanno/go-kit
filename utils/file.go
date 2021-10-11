@@ -2,11 +2,12 @@ package utils
 
 import (
 	"fmt"
-	"io"
 	"os"
 	"path"
 	"path/filepath"
 	"time"
+
+	shutil "github.com/termie/go-shutil"
 )
 
 // FileExist ...
@@ -59,33 +60,12 @@ func CopyFile(src, dst string, backupDir ...string) (written int64, err error) {
 		name := filepath.Base(dst)
 		backup := path.Join(backupDir[0], name) + "." + suffix
 
-		var sf *os.File
-		sf, err = os.Open(src)
+		err = shutil.CopyFile(src, backup, false)
 		if err != nil {
-			err = fmt.Errorf("open file %s failed, message is %s", src, err.Error())
-			return
-		}
-		defer sf.Close()
-
-		var bf *os.File
-		bf, err = os.Create(backup)
-		if err != nil {
-			err = fmt.Errorf("open file %s failed, message is %s", backup, err.Error())
-			return
-		}
-		defer bf.Close()
-
-		written, err = io.Copy(sf, bf)
-		if err != nil {
-			err = fmt.Errorf("copy file failed, message is %s", err.Error())
-			return
+			err = fmt.Errorf("backup file failed, message is %s", err.Error())
 		}
 
-		err = bf.Sync()
-		if err != nil {
-			err = fmt.Errorf("sync file %s failed, message is %s", backup, err.Error())
-			return
-		}
+		return
 	}
 
 	err = os.Rename(src, dst)

@@ -40,8 +40,8 @@ func SetConfig(config *Config) (err error) {
 	var slLevel syslog.Priority
 	hooks := make(logrus.LevelHooks)
 
-	if strings.ToUpper(config.TimeFormat) == "QISHU" {
-		defaultTimeFormat = QISHUTimeFormat
+	if len(config.TimeFormat) > 0 {
+		defaultTimeFormat = config.TimeFormat
 	}
 
 	if len(config.Level) != 0 {

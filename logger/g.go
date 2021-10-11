@@ -2,9 +2,6 @@ package logger
 
 const (
 
-	// QISHUTimeFormat ...
-	QISHUTimeFormat = "200601021504"
-
 	// DefaultTimeFormat ...
 	DefaultTimeFormat = "2006-01-02 15:04:05"
 )
@@ -45,7 +42,7 @@ type Config struct {
 	// 是否开启函数名、文件行数打印
 	ReportCaller bool `json:"report_caller" bson:"report_caller"`
 
-	// 时间格式，支持 DEFAULT 和 QISHU 两种，默认为 DEFAULT
+	// 时间格式，支持自定义时间格式
 	TimeFormat string `json:"time_format" bson:"time_format"` // DEFAULT/QISHU
 
 	// 日志输出，支持 syslog://HOST:PORT、STDOUT、STDERR 和 FILE 四种。默认为 STDOUT
